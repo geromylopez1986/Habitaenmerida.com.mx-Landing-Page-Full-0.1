@@ -1,0 +1,1739 @@
+/*! HTML5 Boilerplate v8.0.0 | MIT License | https://html5boilerplate.com/ */
+
+/* main.css 2.1.0 | MIT License | https://github.com/h5bp/main.css#readme */
+/*
+ * What follows is the result of much research on cross-browser styling.
+ * Credit left inline and big thanks to Nicolas Gallagher, Jonathan Neal,
+ * Kroc Camen, and the H5BP dev community and team.
+ */
+
+/* ==========================================================================
+   Base styles: opinionated defaults
+   ========================================================================== */
+
+html {
+  color: #222;
+  font-size: 1em;
+  line-height: 1.4;
+}
+
+/*
+ * Remove text-shadow in selection highlight:
+ * https://twitter.com/miketaylr/status/12228805301
+ *
+ * Vendor-prefixed and regular ::selection selectors cannot be combined:
+ * https://stackoverflow.com/a/16982510/7133471
+ *
+ * Customize the background color to match your design.
+ */
+
+::-moz-selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+::selection {
+  background: #b3d4fc;
+  text-shadow: none;
+}
+
+:root {
+  --color-black: #1b1213;
+  --color-dark: #333333;
+  --color-white: #ffffff;
+  --color-red: #ff1f1a;
+  --color-gray: #bcbdc1;
+  --color-blue: #0095dc;
+  --color-blueRGBA: rgba(0, 149, 220, 0.7);
+  --color-whatapp: #25d366;
+  --color-whatsapp2: #128c7e;
+  --RGBA-1: rgba(0, 0, 0, 0.3);
+  --RGBA-2: rgba(0, 0, 0, 0.5);
+  --RGBA-3: rgba(0, 0, 0, 0.7);
+  --RGBA-4: rgba(0, 0, 0, 0.9);
+  --color-slowwhite: rgb(243, 241, 241);
+  --background-blue: var(--color-blue);
+  --background-black: var(--color-black);
+  --background-white: var(--color-white);
+  --background-dark: var(--color-dark);
+  --box-gray: var(--color-gray);
+  --text-blue: var(--color-blue);
+  --text-black: var(--color-black);
+  --text-white: var(--color-white);
+  --text-gray: var(--color-gray);
+  --text-red: var(--color-red);
+  --text-dark: var(--color-dark);
+  --text-slowwhite: var(--color-slowwhite);
+
+  --font-dosis: "Dosis", sans-serif;
+  --font-oswald: "Oswald", sans-serif;
+  --font-roboto: "Roboto", sans-serif;
+
+  --animation-duration1: 2s;
+  --animation-duration2: 3s;
+  --animation-duration3: 4s;
+  --animation-duration4: 5s;
+}
+
+/*
+ * A better looking default horizontal rule
+ */
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #ccc;
+  margin: 1em 0;
+  padding: 0;
+}
+
+/*
+ * Remove the gap between audio, canvas, iframes,
+ * images, videos and the bottom of their containers:
+ * https://github.com/h5bp/html5-boilerplate/issues/440
+ */
+
+audio,
+canvas,
+iframe,
+img,
+svg,
+video {
+  vertical-align: middle;
+}
+
+h1,
+h2,
+h3,
+p,
+a {
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Remove default fieldset styles.
+ */
+
+fieldset {
+  border: 0;
+  margin: 0;
+  padding: 0;
+}
+
+/*
+ * Allow only vertical resizing of textareas.
+ */
+
+textarea {
+  resize: vertical;
+}
+
+/* ==========================================================================
+   Author's custom styles
+   ========================================================================== */
+
+/* ==========================================================================
+   Helper classes
+   ========================================================================== */
+
+/*
+ * Hide visually and from screen readers
+ */
+
+.hidden,
+[hidden] {
+  display: none !important;
+}
+
+.btn {
+  padding: 8px 16px;
+  border-style: none;
+  font-size: 18px;
+  text-transform: uppercase;
+  border-radius: 10px;
+  font-family: var(--font-dosis);
+}
+
+.btn-primary {
+  color: var(--text-white);
+  background-color: var(--background-blue);
+}
+
+.btn-second {
+  background-color: var(--color-whatapp);
+  color: var(--text-white);
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+/*
+ * Hide only visually, but have it available for screen readers:
+ * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
+ *
+ * 1. For long content, line feeds are not interpreted as spaces and small width
+ *    causes content to wrap 1 word per line:
+ *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
+ */
+
+.sr-only {
+  border: 0;
+  clip: rect(0, 0, 0, 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  /* 1 */
+}
+
+/*
+ * Extends the .sr-only class to allow the element
+ * to be focusable when navigated to via the keyboard:
+ * https://www.drupal.org/node/897638
+ */
+
+.sr-only.focusable:active,
+.sr-only.focusable:focus {
+  clip: auto;
+  height: auto;
+  margin: 0;
+  overflow: visible;
+  position: static;
+  white-space: inherit;
+  width: auto;
+}
+
+/*
+ * Hide visually and from screen readers, but maintain layout
+ */
+
+.invisible {
+  visibility: hidden;
+}
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix::before,
+.clearfix::after {
+  content: " ";
+  display: table;
+}
+
+.clearfix::after {
+  clear: both;
+}
+
+/* ==========================================================================
+   EXAMPLE Media Queries for Responsive Design.
+   These examples override the primary ('mobile first') styles.
+   Modify as content requires.
+   ========================================================================== */
+
+@media only screen and (min-width: 35em) {
+  /* Style adjustments for viewports that meet the condition */
+}
+
+@media print,
+  (-webkit-min-device-pixel-ratio: 1.25),
+  (min-resolution: 1.25dppx),
+  (min-resolution: 120dpi) {
+  /* Style adjustments for high resolution devices */
+}
+
+/* ==========================================================================
+   Print styles.
+   Inlined to avoid the additional HTTP request:
+   https://www.phpied.com/delay-loading-your-print-css/
+   ========================================================================== */
+
+@media print {
+  *,
+  *::before,
+  *::after {
+    background: #fff !important;
+    color: #000 !important;
+    /* Black prints faster */
+    box-shadow: none !important;
+    text-shadow: none !important;
+  }
+
+  img {
+    width: 100%;
+  }
+
+  a,
+  a:visited {
+    text-decoration: underline;
+  }
+
+  a[href]::after {
+    content: " (" attr(href) ")";
+  }
+
+  abbr[title]::after {
+    content: " (" attr(title) ")";
+  }
+
+  /*
+   * Don't show links that are fragment identifiers,
+   * or use the `javascript:` pseudo protocol
+   */
+  a[href^="#"]::after,
+  a[href^="javascript:"]::after {
+    content: "";
+  }
+
+  pre {
+    white-space: pre-wrap !important;
+  }
+
+  pre,
+  blockquote {
+    border: 1px solid #999;
+    page-break-inside: avoid;
+  }
+
+  /*
+   * Printing Tables:
+   * https://web.archive.org/web/20180815150934/http://css-discuss.incutio.com/wiki/Printing_Tables
+   */
+  thead {
+    display: table-header-group;
+  }
+
+  tr,
+  img {
+    page-break-inside: avoid;
+  }
+
+  p,
+  h2,
+  h3 {
+    orphans: 3;
+    widows: 3;
+  }
+
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+}
+
+header section.first-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--background-blue);
+  padding: 0 16px;
+}
+
+header section.first-head .header-contact {
+  width: 100%;
+  text-align: center;
+}
+
+header section.first-head .header-contact span div,
+a {
+  display: inline-block;
+  color: var(--text-white);
+  text-decoration: none;
+}
+
+header section.first-head .header-contact span div {
+  margin-right: 8px;
+  padding: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: var(--background-white);
+}
+
+header section.first-head .header-contact span div i {
+  color: var(--text-blue);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+}
+
+header section.first-head .header-contact span a {
+  font-size: 18px;
+  margin-right: 8px;
+  transition: 0.2s;
+}
+
+header section.first-head .header-contact span a:hover {
+  color: var(--text-slowwhite);
+}
+
+header section.first-head .header-social nav ul {
+  list-style: none;
+}
+
+header section.first-head .header-social nav ul li {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+header section.first-head .header-social nav ul li a {
+  padding: 8px;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background-color: var(--background-white);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.3s ease-in-out;
+}
+
+header section.first-head .header-social nav ul li a:hover {
+  background-color: var(--color-slowwhite);
+}
+
+header section.first-head .header-social nav ul li a i {
+  font-size: 18px;
+  color: var(--text-blue);
+}
+
+.menu-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sticky {
+  position: fixed;
+  z-index: 10;
+  top: 0;
+  background-color: var(--background-white);
+  width: 100%;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: 1s;
+}
+
+.header-logo {
+  width: 163px;
+  margin-left: 10px;
+}
+
+.header-logo img {
+  width: 160px;
+}
+
+.logo-nosotros {
+  width: 250px;
+  margin-bottom: 16px;
+}
+
+.logo-nosotros img {
+  width: 250px;
+}
+
+.navegation {
+  padding-right: 16px;
+}
+
+.navegation nav ul {
+  list-style: none;
+}
+
+.navegation nav ul li {
+  display: inline-block;
+  margin: 8px 16px;
+}
+.navegation nav ul li a {
+  color: var(--text-black);
+  font-size: 16px;
+  font-family: var(--font-roboto);
+  transition: 0.5s;
+}
+
+.navegation nav ul li a:hover {
+  color: var(--text-gray);
+}
+
+header .hero {
+  background-image: url(../img/hero/merida.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  width: 100%;
+  height: 600px;
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.presentation {
+  animation-duration: 2s;
+  animation-delay: 3s;
+}
+
+header .hero section .contendor {
+  color: var(--text-white);
+  text-align: center;
+}
+
+header .hero section .contendor .title h2 {
+  font-size: 32px;
+  letter-spacing: 2px;
+  color: var(--text-slowwhite);
+  font-family: var(--font-roboto);
+  text-shadow: 0px 7px 8px black;
+  animation-duration: 1s;
+  animation-delay: 1s;
+}
+
+header .hero section .contendor .main-title h1 {
+  font-family: var(--font-oswald);
+  font-size: 54px;
+  letter-spacing: 20px;
+  margin: 0;
+  padding: 0;
+  font-weight: bold;
+  animation-duration: 2s;
+  animation-delay: 2s;
+  text-shadow: 0px 7px 8px var(--text-black);
+}
+
+header .hero section .contendor .body-title p {
+  font-size: 18px;
+  text-align: center;
+  font-family: var(--font-dosis);
+  letter-spacing: 1px;
+  animation-duration: 2s;
+  animation-delay: 2s;
+}
+
+header .hero section .contendor .div {
+  width: 100%;
+  margin: 16px 0;
+}
+
+header .hero section .contendor .div .barra {
+  width: 100px;
+  height: 2px;
+  background-color: var(--background-white);
+  margin: 0 auto;
+}
+
+header .hero section .contendor .btn-contact {
+  margin-top: 16px;
+}
+
+header .hero section .contendor a {
+  animation-duration: 1s;
+  animation-delay: 1s;
+}
+
+/* FIN DE LA SECTION DE HEADER-------------------------------------------- */
+
+/* MAIN SECTION */
+main section.comercios-list {
+  position: relative;
+  top: -100px;
+  z-index: 2;
+}
+
+main section.comercios-list .indiv-comercs {
+  width: 100%;
+  height: 400px;
+  background-color: var(--background-dark);
+  display: flex;
+  border-radius: 20px;
+  color: var(--text-white);
+  justify-content: space-between;
+  text-align: center;
+  padding: 16px 0;
+}
+
+main section.comercios-list .indiv-comercs .tag-propie p {
+  margin: 32px auto 16px auto !important;
+}
+
+main section.comercios-list .indiv-comercs .residenc {
+  width: 100%;
+  animation-duration: 2s;
+}
+
+main section.comercios-list .indiv-comercs .residenc div {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+main section.comercios-list .indiv-comercs .residenc div span {
+  font-size: 54px;
+  background-color: var(--text-gray);
+  padding: 10px;
+  border-radius: 40px;
+}
+
+main section.comercios-list .indiv-comercs .residenc h2 {
+  font-family: var(--font-dosis);
+  margin-top: 54px;
+}
+
+main section.comercios-list .indiv-comercs .residenc p {
+  font-family: var(--font-roboto);
+  color: var(--text-gray);
+  width: 300px;
+  margin: 34px auto 0 auto;
+}
+
+main section.comercios-list .indiv-comercs .comerc {
+  width: 100%;
+  animation-duration: 3s;
+}
+
+main section.comercios-list .indiv-comercs .comerc div {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+main section.comercios-list .indiv-comercs .comerc div span {
+  font-size: 54px;
+  background-color: var(--text-gray);
+  padding: 10px;
+  border-radius: 40px;
+}
+
+main section.comercios-list .indiv-comercs .comerc h2 {
+  font-family: var(--font-dosis);
+  margin-top: 54px;
+}
+
+main section.comercios-list .indiv-comercs .comerc p {
+  font-family: var(--font-roboto);
+  color: var(--text-gray);
+  width: 300px;
+  margin: 32px auto 0 auto;
+}
+
+main section.comercios-list .indiv-comercs .tag-propie {
+  width: 100%;
+  animation-duration: 4s;
+}
+
+main section.comercios-list .indiv-comercs .tag-propie div {
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+main section.comercios-list .indiv-comercs .tag-propie div span {
+  font-size: 54px;
+  background-color: var(--text-gray);
+  padding: 10px;
+  border-radius: 40px;
+}
+
+main section.comercios-list .indiv-comercs .tag-propie h2 {
+  font-family: var(--font-dosis);
+  margin-top: 54px;
+}
+
+main section.comercios-list .indiv-comercs .tag-propie p {
+  font-family: var(--font-roboto);
+  color: var(--text-gray);
+  width: 300px;
+  margin: 32px auto 0 auto;
+}
+
+/* QUIENES SOMOS */
+main section.quienes-somos {
+  background-color: var(--background-white);
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 3;
+}
+
+main section.quienes-somos::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: var(--background-blue);
+  clip-path: circle(535px at right);
+}
+
+main section.quienes-somos .header-nosotros {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  z-index: 3;
+}
+
+.info-sobre h2 {
+  font-family: var(--font-oswald);
+  font-weight: 500;
+  letter-spacing: 3px;
+  color: var(--text-black);
+  font-size: 40px;
+  margin: 0;
+}
+
+.info-sobre p {
+  font-family: var(--font-dosis);
+  color: var(--text-dark);
+  font-size: 18px;
+  text-transform: lowercase;
+  width: 500px;
+  letter-spacing: 1px;
+  margin-bottom: 16px;
+}
+
+.info-sobre p span {
+  font-family: var(--font-dosis);
+  color: var(--text-blue);
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.poster-sobre {
+  max-width: 1000px;
+  /*   width: 100%; */
+  overflow: hidden;
+  margin-left: 16px;
+  position: relative;
+}
+
+.poster-sobre img {
+  width: 100%;
+  animation-duration: 3s;
+}
+
+/* ----------------------------------------------------------------- */
+.first-part {
+  background-color: var(--background-white);
+  position: relative;
+  z-index: 3;
+}
+
+.header-first-part {
+  padding-top: 16px;
+  text-align: center;
+  width: 450px;
+}
+
+.header-first-part .title h2 {
+  font-family: var(--font-roboto);
+  color: var(--text-black);
+}
+
+.header-first-part .title {
+  position: relative;
+}
+
+.header-first-part .body-first-part p {
+  font-family: var(--font-dosis);
+  color: var(--text-dark);
+  margin: 16px 0;
+  text-align: left;
+  text-transform: lowercase;
+}
+
+.header-first-part .title::after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  background-image: url(../img/forma2.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header-first-part .body-first-part p span {
+  font-size: 40px;
+  color: var(--text-blue);
+  font-weight: bold;
+}
+
+.elig-flex-first-part {
+  display: flex;
+  width: 95%;
+  margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.elig-flex-first-part .section-elig {
+  max-width: 800px;
+  width: 100%;
+}
+
+.elig-flex-first-part .section-elig .header-pararam {
+  height: auto;
+}
+
+.header-elige__title {
+  padding: 40px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.header-elige__title h2 {
+  font-family: var(--font-roboto);
+  color: var(--text-black);
+}
+
+.elig-flex-first-part .section-elig .header-pararam .icon-section span i {
+  color: var(--text-white);
+  font-size: 24px;
+}
+
+/* --------------------------------------------------------------------- */
+
+.nuestros-trabajos {
+  background-color: var(--background-white);
+  padding: 24px 0;
+  position: relative;
+  z-index: 3;
+}
+
+.nuestros-trabajos .section-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.nuestros-trabajos .section-list img {
+  width: 100%;
+  height: 205px;
+}
+
+.nuestros-trabajos .section-list .st {
+  text-align: center;
+  margin: 16px 8px;
+}
+
+.body-sobre .title h2 {
+  font-family: var(--font-roboto);
+  font-size: 20px;
+  color: var(--text-black);
+}
+
+.body-sobre .content p {
+  color: var(--text-dark);
+  font-family: var(--font-dosis);
+}
+
+/* SECTION ELIGENOS */
+section.eligenos {
+  background-color: var(--background-blue);
+  color: var(--text-white);
+  padding: 16px 0;
+  position: relative;
+  z-index: 3;
+}
+
+section.eligenos::after {
+  content: "";
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  width: 500px;
+  height: 100%;
+  background-color: var(--background-white);
+  clip-path: circle(450px at right);
+}
+
+.header-eligenos {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.header-eligenos .post-title {
+  position: relative;
+  z-index: 2;
+}
+
+.header-eligenos .post-title img {
+  width: 500px;
+}
+
+section.eligenos .header-eligenos .title {
+  margin-bottom: 16px;
+}
+
+.header-eligenos .post-title img {
+  animation-duration: 1s;
+  animation-delay: 1s;
+  width: 100%;
+  overflow: hidden;
+}
+
+section.eligenos .header-eligenos .title h2 {
+  font-family: var(--font-oswald);
+  letter-spacing: 3px;
+  width: 100%;
+  overflow: hidden;
+  font-size: 32px;
+  text-shadow: 0px 5px 6px black;
+  text-transform: uppercase;
+  animation-duration: 1s;
+  animation-delay: 1s;
+}
+
+section.eligenos .header-eligenos .content p {
+  font-family: var(--font-dosis);
+  font-size: 24px;
+  width: 100%;
+  animation-duration: 2s;
+  animation-delay: 2s;
+  overflow: hidden;
+}
+
+.elig-box {
+  width: 100%;
+  background-color: var(--background-white);
+}
+
+.header-valores {
+  padding: 32px 0;
+  width: 100%;
+  text-align: center;
+}
+
+.header-valores h2 {
+  color: var(--text-black);
+  font-family: var(--font-roboto);
+  letter-spacing: 2px;
+  font-weight: bold;
+  font-size: 2em;
+}
+
+.elig-flex {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 100%;
+  padding: 16px 0;
+  position: relative;
+  z-index: 3;
+}
+
+.flex-sin__duda {
+  display: flex;
+  padding: 36px 0;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sin__duda-poster {
+  max-width: 500px;
+  width: 450px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 11px 17px 6px var(--RGBA-2);
+}
+
+.sin__duda-poster img {
+  width: 450px;
+}
+
+section.eligenos .elig-sectiones .section-elig {
+  background-color: var(--text-slowwhite);
+  color: var(--text-white);
+  margin: 5px auto;
+  max-width: 400px;
+  overflow: hidden;
+  height: 300px;
+  border-top: 8px solid var(--color-red);
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+}
+
+.section-elig .header-pararam .icon-section {
+  height: 100px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-elig .header-pararam .icon-section span {
+  background-color: var(--background-blue);
+  width: 80px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 80px;
+}
+
+.section-elig .header-pararam .icon-section span i {
+  font-size: 30px;
+}
+
+.title-param {
+  text-align: center;
+}
+
+.elig-box1 .title-param h2 {
+  font-family: var(--font-oswald);
+  font-weight: normal;
+  color: var(--text-black);
+}
+
+.body-param .content {
+  margin-top: 16px;
+}
+
+.body-param .content {
+  padding: 2px;
+  text-align: center;
+}
+
+.elig-box1 .elig-flex-first-part .body-param .content p span {
+  display: block;
+  font-family: var(--font-dosis);
+  font-size: 18px;
+  color: var(--text-dark);
+  text-transform: lowercase;
+  position: relative;
+  margin-bottom: 16px;
+}
+
+.elig-box1 .elig-flex-first-part .body-param .content p span ::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -180%;
+  background-image: url(../img/check-icon.png);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  width: 20px;
+  height: 20px;
+}
+
+.elig-box1 .elig-flex-first-part .body-param .content p span span {
+  display: inline-block;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+
+.elig-box1 .elig-flex-first-part .body-param .content p span.text-negrita {
+  color: var(--text-black) !important;
+  font-weight: bold;
+}
+
+/* CATALOGO DE PARA LAS LIST */
+
+section.catalogo-list {
+  background-image: url(../img/hero/inmobiliaria.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  width: 100%;
+  height: 500px;
+  position: relative;
+  z-index: 3;
+}
+
+section.catalogo-list::before {
+  content: "";
+  width: 100%;
+  height: 500px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: var(--RGBA-1);
+}
+
+section.catalogo-list .mov-right {
+  height: 500px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+section.catalogo-list .mov-right .catal-modal {
+  width: 400px;
+  height: 300px;
+  position: relative;
+  z-index: 3;
+  background-color: var(--color-blueRGBA);
+}
+
+section.catalogo-list .mov-right .catal-modal {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+section.catalogo-list .mov-right .catal-modal .header-catal .icon-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 32px 0 16px 0;
+}
+
+section.catalogo-list .mov-right .catal-modal .header-catal .icon-section span {
+  font-size: 28px;
+  background-color: var(--background-white);
+  width: 60px;
+  height: 60px;
+  border-radius: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+section.catalogo-list .mov-right .catal-modal .header-catal .title {
+  text-align: center;
+}
+
+section.catalogo-list .mov-right .catal-modal .header-catal .title h2 {
+  font-family: var(--font-oswald);
+  font-size: 28px;
+  letter-spacing: 2px;
+  color: var(--text-white);
+}
+
+section.catalogo-list .mov-right .catal-modal .header-catal .div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+section.catalogo-list .mov-right .catal-modal .header-catal .div .barra {
+  width: 80px;
+  height: 2px;
+  margin: 28px 0;
+  background-color: var(--background-white);
+}
+
+section.catalogo-list .mov-right .catal-modal .header-catal .content p {
+  font-size: 18px;
+  font-weight: normal;
+  font-family: var(--font-dosis);
+  color: var(--text-white);
+}
+
+/* FIN DE EL CATALOGO PARA LAS LIST */
+
+.flex-box2 .section-elig .header-pararam .title-param h2 {
+  color: var(--text-black);
+  font-family: var(--font-roboto);
+  font-weight: normal;
+}
+
+.flex-box2 .section-elig .body-param .content p {
+  color: var(--text-dark);
+}
+
+/* CATALOGO DE PROVEDORES */
+section.cartera {
+  width: 100%;
+  position: relative;
+  z-index: 4;
+}
+
+section.cartera .cartera-flex {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+section.cartera .cartera-flex .info-cartera .header-cartera .title h2 {
+  font-size: 42px;
+  font-family: var(--font-oswald);
+  letter-spacing: 5px;
+}
+
+section.cartera .cartera-flex .info-cartera .header-cartera .title h2 span {
+  color: var(--color-red);
+  text-transform: uppercase;
+}
+
+section.cartera .cartera-flex .info-cartera .header-cartera {
+  width: 430px;
+}
+
+section.cartera .cartera-flex .content-cartera {
+  display: flex;
+  justify-content: space-between;
+}
+
+section.cartera .cartera-flex .content-cartera nav ul {
+  list-style: none;
+}
+
+section.cartera .cartera-flex .content-cartera nav ul li {
+  padding: 8px;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  font-size: 28px;
+  font-family: var(--font-dosis);
+}
+
+section.cartera .cartera-flex .content-cartera nav ul li span {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30px;
+  height: 30px;
+  background-color: var(--color-red);
+  padding: 8px;
+  border-radius: 40px;
+  margin-right: 8px;
+}
+
+section.cartera .cartera-flex .content-cartera nav ul li span i {
+  font-size: 24px;
+  color: var(--text-white);
+}
+
+/* FIN DE EL CATALOGO DE PROVEDORES */
+
+/* SECTION DE MISION Y CARTERA DE LIST */
+section.mission {
+  position: relative;
+  width: 100%;
+  height: 420px;
+  z-index: 4;
+  background-color: var(--background-blue);
+}
+
+section.mission::before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 4;
+  background-image: url(../img/forma1.png);
+}
+
+section.mission .mision-flex {
+  height: 420px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  position: relative;
+  z-index: 4;
+}
+
+section.mission .mision-flex .title h2 {
+  color: var(--text-white);
+  font-size: 42px;
+  font-family: var(--font-roboto);
+  letter-spacing: 2px;
+}
+
+.black-title {
+  color: var(--text-black) !important;
+}
+
+section.mission .mision-flex .div {
+  width: 100%;
+}
+
+section.mission .mision-flex .div .barra {
+  width: 80px;
+  height: 3px;
+  margin: 24px 0;
+  background-color: var(--background-white);
+}
+
+section.mission .mision-flex .contetn {
+  width: 450px;
+}
+
+section.mission .mision-flex .contetn p {
+  font-size: 20px;
+  font-family: var(--font-dosis);
+  color: var(--text-white);
+}
+
+/* FIN DE SECTION DE MISION Y CARTERA DE LIST */
+
+/* SECTION FOOTER */
+footer {
+  position: relative;
+  z-index: 4;
+  width: 100%;
+  height: 100%;
+}
+.section-top {
+  background-image: url(../img/hero/tower.jpg);
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+}
+
+.section-top::before {
+  content: "";
+  background-color: var(--RGBA-1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.footer-flex {
+  height: 600px;
+  position: relative;
+  z-index: 4;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+}
+
+.footer-flex .left-container .title {
+  width: 430px;
+}
+
+.footer-flex .left-container .title h2 {
+  font-family: var(--font-oswald);
+  font-size: 24px;
+  font-weight: normal;
+  color: var(--text-white);
+}
+
+.footer-flex .left-container .div .barra {
+  background-color: var(--background-white);
+  width: 60px;
+  height: 3px;
+  margin: 16px 0;
+}
+
+.contact-footer {
+  background-color: var(--RGBA-3);
+  padding: 8px;
+  width: 340px;
+  border-top: 5px solid var(--color-red);
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.contact-footer .call-dial .title h2 {
+  font-family: var(--font-oswald);
+  font-weight: normal;
+  font-size: 20px;
+}
+
+.contact-footer .call-dial .body-info {
+  margin-top: 16px;
+}
+
+.contact-footer .call-dial .body-info p {
+  color: var(--text-gray);
+  font-family: var(--font-roboto);
+  margin-top: 8px;
+}
+
+.contact-footer .call-dial .body-info p span {
+  color: var(--text-white);
+}
+
+.btn-whatsapp {
+  margin-top: 16px;
+}
+
+.btn-whatsapp a {
+  text-transform: capitalize;
+  display: block;
+  text-align: center;
+}
+
+.formulario {
+  background-color: var(--background-white);
+  padding: 16px;
+  width: 350px;
+}
+
+/* .formulario form {
+  width: 100%;
+} */
+
+/* .formulario form .form-group {
+  width: 100%;
+} */
+
+.formulario form .form-group label,
+input {
+  display: block;
+}
+
+.formulario form .form-group label {
+  font-size: 18px;
+  font-family: var(--font-oswald);
+  margin-bottom: 8px;
+}
+
+.formulario form .form-group input {
+  margin-bottom: 8px;
+  border: 1px solid var(--text-gray);
+  padding: 8px;
+  width: 90%;
+  transition: all 0.5s ease-in-out;
+}
+
+.formulario form .form-group textarea {
+  padding: 8px;
+}
+
+.formulario form button {
+  border: none;
+  padding: 8px 16px;
+  color: var(--text-white);
+  background-color: var(--background-blue);
+  margin-top: 16px;
+}
+
+.leyenda {
+  margin: 8px 0;
+  width: 370px;
+}
+
+.leyenda span {
+  font-family: var(--font-roboto);
+  color: var(--text-gray);
+}
+
+section.section-bottom {
+  background-color: var(--background-blue);
+  color: var(--text-white);
+  padding: 8px 0;
+  text-align: center;
+}
+
+@media only screen and (max-width: 480px) {
+  /* Style adjustments for viewports that meet the condition */
+
+  .container {
+    width: 95%;
+  }
+
+  .navegation {
+    display: none;
+  }
+
+  header .hero section .contendor .main-title h1 {
+    letter-spacing: 2px;
+  }
+
+  header .hero section .contendor .title h2 {
+    letter-spacing: 1;
+    font-size: 28px;
+  }
+
+  header section.first-head {
+    padding: 8px;
+    display: block;
+    position: relative;
+  }
+
+  .info-sobre h2 {
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  .info-sobre p {
+    text-align: center;
+  }
+
+  header section.first-head .header-contact span {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  header section.first-head .header-contact span div {
+    margin-right: 2px;
+  }
+
+  header section.first-head .header-contact span a {
+    font-size: 15px;
+  }
+
+  header section.first-head .header-social {
+    position: absolute;
+    top: 100%;
+    z-index: 2;
+    right: 10px;
+  }
+
+  header section.first-head .header-social nav ul li {
+    margin-bottom: 8px;
+    margin-right: 2px;
+  }
+
+  header section.first-head .header-social nav ul li a {
+    background-color: var(--background-blue);
+  }
+
+  header section.first-head .header-social nav ul li a i {
+    color: var(--text-white);
+  }
+
+  .header-logo {
+    text-align: center;
+    margin-left: 0;
+  }
+
+  header .hero {
+    background-attachment: scroll;
+  }
+
+  main section.comercios-list {
+    top: 0;
+    width: 100%;
+    display: block;
+  }
+
+  main section.comercios-list .indiv-comercs {
+    height: auto;
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0;
+    display: block;
+    padding: 0;
+  }
+
+  main section.quienes-somos {
+    display: block;
+    background-attachment: scroll;
+  }
+
+  main section.quienes-somos .header-nosotros {
+    display: block;
+    width: 100%;
+  }
+
+  .logo-nosotros {
+    text-align: center;
+    width: 100%;
+    margin-bottom: 0px;
+  }
+
+  .info-sobre p {
+    width: 100%;
+  }
+
+  .poster-sobre {
+    margin-left: 0;
+  }
+
+  .poster-sobre img {
+    width: 100%;
+  }
+
+  .elig-flex-first-part {
+    display: block;
+  }
+
+  .nuestros-trabajos .section-list {
+    grid-template-columns: 100%;
+  }
+
+  main section.eligenos {
+    display: block;
+  }
+
+  .flex-sin__duda {
+    display: block;
+  }
+
+  .sin__duda-poster {
+    width: 100%;
+    margin-top: 40px;
+  }
+
+  .header-first-part {
+    width: 100%;
+  }
+
+  .header-first-part .title::after {
+    height: 30px;
+  }
+
+  .sin__duda-poster img {
+    width: 100%;
+  }
+
+  .header-eligenos {
+    display: block;
+  }
+
+  .header-eligenos .post-title img {
+    width: 100%;
+  }
+
+  section.eligenos .header-eligenos .title {
+    position: relative;
+    z-index: 4;
+  }
+
+  section.eligenos .elig-sectiones .elig-flex {
+    display: block;
+    margin-bottom: 8px;
+  }
+
+  .header-valores {
+    position: relative;
+    text-align: center;
+    z-index: 2;
+    text-align: center;
+  }
+
+  .header-valores h2 {
+    width: 300px;
+    display: inline-block;
+    margin: 0 auto;
+    color: var(--text-black);
+  }
+
+  section.eligenos .header-eligenos .content {
+    color: var(--text-slowwhite);
+    position: relative;
+    z-index: 4;
+  }
+
+  section.cartera .cartera-flex {
+    display: block;
+  }
+
+  section.cartera .cartera-flex .info-cartera .header-cartera {
+    width: 100%;
+  }
+
+  section.cartera .cartera-flex .content-cartera nav ul li {
+    padding: 8px 0;
+  }
+
+  section.cartera .cartera-flex .content-cartera {
+    display: block;
+  }
+
+  section.mission {
+    height: 450px;
+  }
+
+  section.mission .mision-flex {
+    display: block;
+    padding: 0;
+    text-align: center;
+  }
+
+  section.mission .mision-flex .header-right .title {
+    width: 100%;
+    margin-bottom: 28px;
+  }
+
+  section.mission .mision-flex .header-right .title h2 {
+    color: var(--text-black);
+    font-size: 28px;
+  }
+  section.mission .mision-flex .header-left .title h2 {
+    font-size: 28px;
+    margin-top: 16px;
+  }
+
+  section.mission .mision-flex .header-left .contetn p {
+    color: var(--text-slowwhite);
+  }
+
+  section.mission .mision-flex .header-left .div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  section.mission .mision-flex .header-right .div {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  section.mission .mision-flex .header-right .div .barra {
+    background-color: var(--background-black);
+  }
+
+  section.mission .mision-flex .contetn {
+    width: 100%;
+  }
+
+  footer .footer-flex {
+    display: block;
+    height: auto;
+  }
+
+  .section-top {
+    background-attachment: scroll;
+  }
+
+  footer .footer-flex .left-container .title {
+    width: 100%;
+  }
+
+  .contact-footer {
+    width: auto;
+  }
+
+  .formulario {
+    width: auto;
+  }
+
+  .formulario form .form-group textarea {
+    width: 100%;
+    padding: 0;
+  }
+
+  .leyenda {
+    width: 100%;
+  }
+
+  .contact-footer .call-dial .body-info p span {
+    display: block;
+  }
+}
